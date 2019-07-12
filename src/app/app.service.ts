@@ -17,9 +17,9 @@ export class AppService {
                             include_video = false,
                             include_adult = false,
                             sort_by = 'popularity.desc',
-                            language = 'en-US'): Observable<any> {
+                            language = 'en-US'): Observable<DiscoveryModel> {
 
-      return this.http.get(`${this.BASE_URL}discover/movie?page=${page}&include_video=${include_video}&include_adult=${include_adult}&sort_by=${sort_by}&language=en-US&api_key=${this.API_KEY}`);
+      return this.http.get<DiscoveryModel>(`${this.BASE_URL}discover/movie?page=${page}&include_video=${include_video}&include_adult=${include_adult}&sort_by=${sort_by}&language=en-US&api_key=${this.API_KEY}`);
   }
 
 

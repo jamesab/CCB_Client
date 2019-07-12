@@ -16,7 +16,7 @@ SORT BY:
   Popular
   Top Rated
 */
-movies: any [];
+movies: DiscoveryModel;
 
 constructor(private AppService: AppService) { }
 

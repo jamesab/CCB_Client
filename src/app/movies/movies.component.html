@@ -1,1 +1,19 @@
-<p>movies works!</p>
+
+    <form class="mt-3">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search for a movie, tv show, person..." aria-label="Search for a movie, tv show, person..." aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button">Search</button>
+            </div>
+          </div>
+      </form>
+
+<div class="row flex-row d-inline-flex">
+  <div *ngFor="let movie of movies?.results" class="col-lg-3 pt-3 text-center">
+        <img class="mx-auto d-block" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" width="150" alt="Card image cap">
+        <h5 class="card-title">{{movie.title}}</h5>
+
+        <!-- <p class="badge badge-pill badge-info text-center w-25">{{movie.vote_average}}</p> -->
+        <p class="">{{movie.release_date | date}}</p>
+    </div>
+</div>
