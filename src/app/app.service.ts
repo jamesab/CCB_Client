@@ -22,6 +22,8 @@ export class AppService {
       return this.http.get<DiscoveryModel>(`${this.BASE_URL}discover/movie?page=${page}&include_video=${include_video}&include_adult=${include_adult}&sort_by=${sort_by}&language=en-US&api_key=${this.API_KEY}`);
   }
 
-
+public GetMovieDetails(movie_id): Observable<MovieDetails> {
+  return this.http.get<MovieDetails>(`${this.BASE_URL}movie/${movie_id}?api_key=${this.API_KEY}&language=en-US`);
+}
 
 }
