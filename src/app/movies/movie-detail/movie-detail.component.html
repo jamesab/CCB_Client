@@ -1,26 +1,41 @@
-<h1>{{this.movie.title}}</h1>
-<img src='https://image.tmdb.org/t/p/w500{{this.movie.poster_path}}' width="200" />
-<p>{{this.movie.release_date | date}}</p>
-<img src='https://image.tmdb.org/t/p/w50{{this.movie.backdrop_path}}' width="200" />
-<p>{{this.movie.overview}}</p>
 
-{{this.movie.belongs_to_collection}}
-{{this.movie.budget}}
-{{this.movie.genres}}
-{{this.movie.homepage}}
-{{this.movie.id}}
-{{this.movie.imdb_id}}
-{{this.movie.original_language}}
-{{this.movie.original_title}}
-{{this.movie.popularity}}
-{{this.movie.production_companies}}
-{{this.movie.production_countries}}
-{{this.movie.revenue}}
-{{this.movie.runtime}}
-{{this.movie.spoken_languages}}
-{{this.movie.status}}
-{{this.movie.tagline}}
-{{this.movie.video}}
-{{this.movie.vote_average}}
-{{this.movie.vote_count}}
-{{this.movie.adult}}
+<section [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w1400_and_h450_face' + this.movie?.backdrop_path + ')', 'background-position': 'center center', 'background-size': 'cover'}" >
+<div class="container text-white bg-gradient">
+
+  <div class="row">
+    <div class="col-3">
+      <h3>{{this.movie?.title}}</h3>
+      <img src='https://image.tmdb.org/t/p/w500{{this.movie?.poster_path}}' width="200" />
+      <span style="font-size: 1em;">{{this.movie?.status}} ({{this.movie?.release_date | date:'yyyy'}})</span>
+    </div>
+    <div class="col">
+      <h4>Overview</h4>
+      <p>{{this.movie?.overview}}</p>
+
+      <p>Avg. Vote: {{this.movie?.vote_average}}</p>
+      <p>Votes: {{this.movie?.vote_count | number}}</p>
+
+      <p>Homepage: {{this.movie?.homepage}}</p>
+      <p *ngIf="this.movie?.belongs_to_collection">Collection: {{this.movie?.belongs_to_collection}}</p>
+      <p>Genres: <span  *ngFor="let genre of this.movie?.genres">{{genre.name}}, </span></p>
+
+      <p>Popularity: {{this.movie?.popularity}}</p>
+
+      <p>Budget: {{this.movie?.budget| currency}}</p>
+      <p>Revenue: {{this.movie?.revenue | currency}}</p>
+
+      <p *ngIf="this.movie?.video">Video: {{this.movie?.video}}</p>
+
+      <!-- <p>Tagling: {{this.movie?.tagline}}</p> -->
+      <!-- <p>Prod. Companies: {{this.movie?.production_companies}}</p> -->
+      <!-- <p>Runtime: {{this.movie?.runtime}}</p> -->
+      <!-- <p>Adult: {{this.movie?.adult}}</p> -->
+    </div>
+  </div>
+
+
+</div>
+</section>
+
+
+

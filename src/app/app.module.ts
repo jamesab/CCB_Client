@@ -2,6 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+
 // Modules
 import { AppRoutingModule } from './app-routing.module';
 // Components
@@ -16,6 +18,8 @@ import { FavoriteComponent } from './favorite/favorite.component';
 import { LoginComponent } from './login/login.component';
 import { PeopleComponent } from './people/people.component';
 import { TvshowsComponent } from './tvshows/tvshows.component';
+import { FooterComponent } from './shared/footer/footer.component';
+
 
 
 @NgModule({
@@ -30,12 +34,14 @@ import { TvshowsComponent } from './tvshows/tvshows.component';
     FavoriteComponent,
     LoginComponent,
     PeopleComponent,
-    TvshowsComponent
+    TvshowsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   exports:[
     HttpClientModule

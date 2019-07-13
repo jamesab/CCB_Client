@@ -11,9 +11,9 @@ import {AppService} from '../../app.service';
   styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit {
-movie: any;
+movie: MovieDetails;
 
-  constructor(private AppService: AppService,private route: ActivatedRoute) { }
+  constructor(private AppService: AppService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
