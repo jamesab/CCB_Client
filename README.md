@@ -26,7 +26,9 @@ Make it a personal application. If you do not have a website url, we recommend [
 [The Movie Database API Documentation](https://developers.themoviedb.org/3/getting-started/introduction)
 
 ## Submitting Your App
-When you have completed your app, please post it in a public repository and send us a link - GitHub, GitLab, BitBucket etc.
+When you have completed your app, please post it in a public repository and send us a link - 
+##[GitHub](https://github.com/jamesab/CCB_Client), 
+##[movies.jamesbrookshire.com](http://movies.jamesbrookshire.com/).
 
 <hr/>
 
