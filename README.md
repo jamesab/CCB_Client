@@ -1,7 +1,7 @@
-# CCBClientTest
-# Front-End Developer Test
+<!-- # CCBClientTest
+# Front-End Developer Test -->
 
-## Overview
+<!-- ## Overview
 
 Your client has tasked you with making the Ultimate Moviegoers Guide using _The Movie Database API_. They are asking for an app that at least covers the following:
 
@@ -14,7 +14,7 @@ Your client has tasked you with making the Ultimate Moviegoers Guide using _The 
 
 Best of all is the client has given you full creative control.
 Make the Ultimate Moviegoers Guide the best looking app out there.
-Feel free to use any front-end framework of your choice - React, React-Native, Vue, Vue Native, Angular, Ember etc.
+Feel free to use any front-end framework of your choice - React, React-Native, Vue, Vue Native, Angular, Ember etc. -->
 
 ## API
 
@@ -25,8 +25,8 @@ Make it a personal application. If you do not have a website url, we recommend [
 
 [The Movie Database API Documentation](https://developers.themoviedb.org/3/getting-started/introduction)
 
-## Submitting Your App
-When you have completed your app, please post it in a public repository and send us a link - [GitHub](https://github.com/jamesab/CCB_Client), [movies.jamesbrookshire.com](http://movies.jamesbrookshire.com/).
+## Submitted App
+[movies.jamesbrookshire.com](http://movies.jamesbrookshire.com/)
 
 <hr/>
 
