@@ -1,6 +1,7 @@
 {
   "name": "ccbclient-test",
-  "version": "0.0.0",
+  "author": "James A. Brookshire",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
