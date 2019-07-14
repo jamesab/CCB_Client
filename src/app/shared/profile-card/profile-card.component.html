@@ -1,0 +1,18 @@
+
+
+<div class="row card-deck text-white border-bottom border-secondary">
+<div class="col-3">
+  <div *ngIf='profile.profile_path != null'>
+    <img src="https://image.tmdb.org/t/p/w66_and_h66_face{{profile.profile_path}}" alt="{{profile.name}}" width="66px" />
+  </div>
+  <div *ngIf='profile.profile_path === null'>
+    <img src="../../../assets/images/profile_placeholder.jpg" alt="{{profile.name}}" width="66px" />
+  </div>
+</div>
+<div class="col">
+  <span><strong>{{profile.name}}</strong></span>
+  <p *ngIf='profile.character != null'>{{profile.character}}</p>
+  <p *ngIf='profile.job != null'>{{profile.job}}</p>
+</div>
+</div>
+

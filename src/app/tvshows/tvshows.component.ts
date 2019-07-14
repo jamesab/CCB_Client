@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+//
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-tvshows',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TvshowsComponent implements OnInit {
 
-  constructor() { }
+  tvShows: TvShowsModel;
+
+  constructor(private AppService: AppService) { }
+
 
   ngOnInit() {
+      this.AppService.GetPopularTvShows().subscribe(data => {
+        this.tvShows = data;
+    });
   }
 
+  Next(currentPage) {
+    const page = currentPage + 1;
+    this.AppService.GetPopularTvShows(page).subscribe(data => {
+      this.tvShows = data;
+  });
+  }
+
+  Previous(currentPage) {
+    let page = 1;
+    if (currentPage > 1) {
+      page = currentPage - 1;
+    }
+    this.AppService.GetPopularTvShows(page).subscribe(data => {
+      this.tvShows = data;
+  });
+  }
 }

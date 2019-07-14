@@ -1,1 +1,45 @@
-<p>people works!</p>
+
+<!-- <form #peopleForm="ngForm" (ngSubmit)="search(peopleForm)" class="container mt-3">
+  <div class="input-group mb-3">
+      <input ngModel type="text" name="search" class="form-control" placeholder="Search for a movie, tv show, person..." aria-label="Search for a movie, tv show, person..." aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <span class="input-group-text" (click)="search(peopleForm)">
+        <i class="material-icons">
+            search
+            </i>
+          </span>
+      </div>
+    </div>
+</form> -->
+<h1 class="text-center">People</h1>
+<div class="row flex-row d-inline-flex">
+    <div *ngFor="let person of peoples?.results" class="col-lg-2 text-center person-card">
+      <a routerLink={{person.id}} >
+          <img class="mx-auto d-block" src="https://image.tmdb.org/t/p/w500{{person.profile_path}}" width="150" alt="Card image cap">
+          <h5 class="card-title">{{person.name}}</h5>
+          <span><i class="material-icons">favorite_border</i> {{person.popularity}}</span>
+        </a>
+      </div>
+  </div>
+
+  <nav aria-label="Page navigation example">
+      <ul class="pagination pagination-lg justify-content-center">
+        <li [ngClass]="{'page-item disabled': peoples?.page == 1 }">
+          <a class="page-link" (click)='Previous(peoples?.page)' aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+
+        <li class="page-item" ><a class="page-link" >{{peoples?.page}}</a></li>
+
+        <li [ngClass]="{'page-item disabled': peoples?.page == peoples?.total_pages }">
+          <a class="page-link" (click)='Next(peoples?.page)' aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+      <div class="text-center">Total Results: {{peoples?.total_results | number}}</div>
+      <div class="text-center">Total Pages: {{peoples?.total_pages | number}}</div>
+    </nav>

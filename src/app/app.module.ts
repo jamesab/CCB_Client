@@ -19,6 +19,9 @@ import { LoginComponent } from './login/login.component';
 import { PeopleComponent } from './people/people.component';
 import { TvshowsComponent } from './tvshows/tvshows.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { ProfileCardComponent } from './shared/profile-card/profile-card.component';
+import { PersonDetailsComponent } from './people/person-details/person-details.component';
+import { ShowDetailsComponent } from './tvshows/show-details/show-details.component';
 
 
 
@@ -35,7 +38,10 @@ import { FooterComponent } from './shared/footer/footer.component';
     LoginComponent,
     PeopleComponent,
     TvshowsComponent,
-    FooterComponent
+    FooterComponent,
+    ProfileCardComponent,
+    PersonDetailsComponent,
+    ShowDetailsComponent
   ],
   imports: [
     BrowserModule,

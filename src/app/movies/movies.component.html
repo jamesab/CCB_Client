@@ -27,33 +27,33 @@
 
 
 <div class="row flex-row d-inline-flex">
-  <div *ngFor="let movie of movies?.results" class="col-lg-3 pt-3 text-center movie-card">
+  <div *ngFor="let movie of movies?.results" class="col-lg-2 text-center movie-card">
     <a routerLink={{movie.id}} >
         <img class="mx-auto d-block" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" width="150" alt="Card image cap">
         <h5 class="card-title">{{movie.title}}</h5>
-
-        <!-- <p class="badge badge-pill badge-info text-center w-25">{{movie.vote_average}}</p> -->
         <p class="">{{movie.release_date | date}}</p>
       </a>
     </div>
 </div>
 
 <nav aria-label="Page navigation example">
-    <ul class="pagination pagination-sm justify-content-center">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
+    <ul class="pagination pagination-lg justify-content-center">
+      <li [ngClass]="{'page-item disabled': movies?.page == 1 }">
+        <a class="page-link" (click)='Previous(movies?.page)' aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
           <span class="sr-only">Previous</span>
         </a>
       </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
+
+      <li class="page-item" ><a class="page-link" >{{movies?.page}}</a></li>
+
+      <li [ngClass]="{'page-item disabled': movies?.page == movies?.total_pages }">
+        <a class="page-link" (click)='Next(movies?.page)' aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
           <span class="sr-only">Next</span>
         </a>
       </li>
     </ul>
+    <div class="text-center">Total Results: {{movies?.total_results | number}}</div>
+    <div class="text-center">Total Pages: {{movies?.total_pages | number}}</div>
   </nav>

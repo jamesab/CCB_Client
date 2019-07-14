@@ -1,0 +1,37 @@
+
+<section [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w1400_and_h450_face' + show?.backdrop_path + ')', 'background-position': 'center center', 'background-size': 'cover'}" >
+
+  <div class="container bg-gradient">
+      <div class="row text-white ">
+          <div class="col-lg-3">
+              <h3>{{show?.original_name}}</h3>
+            <img src='https://image.tmdb.org/t/p/w500{{show?.poster_path}}' width="200" />
+          </div>
+          <div class="col">
+            <h3>Overview</h3>
+            <p>{{show?.overview}}</p>
+            <p>Popularity: {{show?.popularity}}</p>
+            <p>Avg. Vote: {{show?.vote_average}}</p>
+            <p>Votes: {{show?.vote_count}}</p>
+            <p>Episodes: {{show?.number_of_episodes}}</p>
+            <p>Number of Seaons: {{show?.number_of_seasons}}</p>
+
+            <p><a href='{{show?.homepage}}'>Website</a></p>
+
+          </div>
+        </div>
+      </div>
+</section>
+
+<div class="container bg-gradient">
+<div class="row">
+  <div class="col" *ngFor="let season of show?.seasons">
+      <div class="card text-center">
+          <img class="mx-auto d-block" src='https://image.tmdb.org/t/p/w500{{season?.poster_path}}' width="100" />
+          <h5 class="card-title">{{season.name}}</h5>
+          <p>{{season.air_date | date: 'MM/dd/yyyy'}}</p>
+          <span>{{season.episode_count}} Episodes</span>
+        </div>
+  </div>
+</div>
+</div>

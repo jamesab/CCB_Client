@@ -1,0 +1,11 @@
+
+  <div class="container text-center mt-3">
+    <img src='https://image.tmdb.org/t/p/w300_and_h450_bestv2{{person?.profile_path}}' />
+  <h3>{{person?.name}}</h3>
+  <p>Birthday: {{person?.birthday | date: 'MM/dd/yyyy'}}</p>
+  <p>Place of birth: {{person?.place_of_birth}}</p>
+  <p *ngIf='person?.deathday !== null'>Date of death: {{person?.deathday}}</p>
+  <p class="text-left">{{person?.biography}}</p>
+  <p><i class="material-icons">favorite_border</i>{{person?.popularity}}</p>
+  <p><a href='{{person?.homepage}}' target="_blank">Website</a></p>
+</div>

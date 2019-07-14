@@ -1,41 +1,60 @@
 
-<section [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w1400_and_h450_face' + this.movie?.backdrop_path + ')', 'background-position': 'center center', 'background-size': 'cover'}" >
-<div class="container text-white bg-gradient">
+<section [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w1400_and_h450_face' + movie?.backdrop_path + ')', 'background-position': 'center center', 'background-size': 'cover'}" >
+<div class="container bg-gradient">
 
-  <div class="row">
-    <div class="col-3">
-      <h3>{{this.movie?.title}}</h3>
-      <img src='https://image.tmdb.org/t/p/w500{{this.movie?.poster_path}}' width="200" />
-      <span style="font-size: 1em;">{{this.movie?.status}} ({{this.movie?.release_date | date:'yyyy'}})</span>
+  <div class="row text-white ">
+    <div class="col-lg-3">
+      <h3>{{movie?.title}}</h3>
+      <img src='https://image.tmdb.org/t/p/w500{{movie?.poster_path}}' width="200" />
+      <p style="font-size: 1em;">{{movie?.status}} ({{movie?.release_date | date:'yyyy'}})</p>
     </div>
     <div class="col">
       <h4>Overview</h4>
-      <p>{{this.movie?.overview}}</p>
+      <p>{{movie?.overview}}</p>
 
-      <p>Avg. Vote: {{this.movie?.vote_average}}</p>
-      <p>Votes: {{this.movie?.vote_count | number}}</p>
+      <p>Avg. Vote: {{movie?.vote_average}}</p>
+      <p>Votes: {{movie?.vote_count | number}}</p>
 
-      <p>Homepage: {{this.movie?.homepage}}</p>
-      <p *ngIf="this.movie?.belongs_to_collection">Collection: {{this.movie?.belongs_to_collection}}</p>
-      <p>Genres: <span  *ngFor="let genre of this.movie?.genres">{{genre.name}}, </span></p>
+      <p><a class="text-white" href='{{movie?.homepage}}'>Homepage</a></p>
+      <p>Genres: <span  *ngFor="let genre of movie?.genres">{{genre.name}}, </span></p>
 
-      <p>Popularity: {{this.movie?.popularity}}</p>
+      <p>Popularity: {{movie?.popularity}}</p>
 
-      <p>Budget: {{this.movie?.budget| currency}}</p>
-      <p>Revenue: {{this.movie?.revenue | currency}}</p>
+      <p>Budget: {{movie?.budget| currency}}</p>
+      <p>Revenue: {{movie?.revenue | currency}}</p>
 
-      <p *ngIf="this.movie?.video">Video: {{this.movie?.video}}</p>
+      <p *ngIf="movie?.video">Video: {{movie?.video}}</p>
 
-      <!-- <p>Tagling: {{this.movie?.tagline}}</p> -->
-      <!-- <p>Prod. Companies: {{this.movie?.production_companies}}</p> -->
-      <!-- <p>Runtime: {{this.movie?.runtime}}</p> -->
-      <!-- <p>Adult: {{this.movie?.adult}}</p> -->
     </div>
   </div>
 
-
 </div>
 </section>
+
+<div class="container bg-gradient">
+  <div class="row">
+    <div class="col">
+    <h4 class="text-white">Cast <span style="font-size:16px;" class="">{{castAndCrew?.cast.length}}</span></h4>
+    <div class="col" *ngFor="let actor of castAndCrew?.cast" >
+
+        <app-profile-card [profile]='actor'></app-profile-card>
+
+    </div>
+  </div>
+
+<div class="col">
+  <h4 class="text-white">Crew <span style="font-size:16px;" class="">{{castAndCrew?.crew.length}}</span></h4>
+  <div class="col" *ngFor="let crew of castAndCrew?.crew" >
+    <app-profile-card [profile]='crew'></app-profile-card>
+  </div>
+  </div>
+</div>
+
+
+  </div>
+
+
+
 
 
 

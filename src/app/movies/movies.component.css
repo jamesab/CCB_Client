@@ -1,9 +1,12 @@
 .movie-card:hover
 {
-  border: solid thin lightgray;
-  border-radius: 25px 25px 25px 25px;
+  /* border: solid thin lightgray;
+  border-radius: 25px 25px 25px 25px; */
 }
 .movie-card a:hover
 {
   text-decoration: none;
+}
+a {
+  color: black !important;
 }

@@ -1,1 +1,38 @@
-<p>tvshows works!</p>
+
+
+
+
+<h1 class="text-center">TV Shows</h1>
+
+<div class="row flex-row d-inline-flex">
+    <div *ngFor="let show of tvShows?.results" class="col-lg-2 text-center tvShows-card">
+      <a routerLink={{show.id}} >
+          <img class="mx-auto d-block" src="https://image.tmdb.org/t/p/w500{{show.poster_path}}" width="150" alt="Card image cap">
+          <h5 class="card-title">{{show.name}}</h5>
+          <p><i class="material-icons">favorite_border</i> {{show.popularity}}</p>
+        </a>
+      </div>
+  </div>
+
+  <nav aria-label="Page navigation example">
+      <ul class="pagination pagination-lg justify-content-center">
+        <li [ngClass]="{'page-item disabled': tvShows?.page == 1 }">
+          <a class="page-link" (click)='Previous(tvShows?.page)' aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+
+        <li class="page-item" ><a class="page-link" >{{tvShows?.page}}</a></li>
+
+        <li [ngClass]="{'page-item disabled': tvShows?.page == tvShows?.total_pages }">
+          <a class="page-link" (click)='Next(tvShows?.page)' aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+      <div class="text-center">Total Results: {{tvShows?.total_results | number}}</div>
+      <div class="text-center">Total Pages: {{tvShows?.total_pages | number}}</div>
+    </nav>
+

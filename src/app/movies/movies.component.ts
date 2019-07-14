@@ -49,4 +49,23 @@ constructor(private AppService: AppService) { }
     }
   }
 
+
+  Next(currentPage) {
+    const page = currentPage + 1;
+    this.AppService.GetDiscoverMovies(page).subscribe(data => {
+      this.movies = data;
+  });
+  }
+
+  Previous(currentPage) {
+    let page = 1;
+    if (currentPage > 1) {
+      page = currentPage - 1;
+    }
+    this.AppService.GetDiscoverMovies(page).subscribe(data => {
+      this.movies = data;
+  });
+  }
+
+
 }
