@@ -14,7 +14,9 @@
       </div>
   </div>
 
-  <nav aria-label="Page navigation example">
+  <app-pager (SendCurrentPage)="GetCurrentPage($event)" [current_page]="peoples?.page" [total_results]="peoples?.total_results" [total_pages]="peoples?.total_pages" ></app-pager>
+
+  <!-- <nav aria-label="Page navigation example">
       <ul class="pagination pagination-lg justify-content-center">
         <li [ngClass]="{'page-item disabled': peoples?.page == 1 }">
           <a class="page-link" (click)='Previous(peoples?.page)' aria-label="Previous">
@@ -34,4 +36,4 @@
       </ul>
       <div class="text-center">Total Results: {{peoples?.total_results | number}}</div>
       <div class="text-center">Total Pages: {{peoples?.total_pages | number}}</div>
-    </nav>
+    </nav> -->

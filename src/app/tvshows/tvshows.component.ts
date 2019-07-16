@@ -46,8 +46,7 @@ export class TvshowsComponent implements OnInit {
     }
 }
 
-  Next(currentPage) {
-    const page = currentPage + 1;
+GetCurrentPage(page) {
     if (this.isSearching) {
       this.AppService.SearchTvShows(this.searchTerm, page).subscribe(data => {
         this.tvShows = data;
@@ -61,21 +60,4 @@ export class TvshowsComponent implements OnInit {
     }
   }
 
-  Previous(currentPage) {
-    let page = 1;
-    if (currentPage > 1) {
-      page = currentPage - 1;
-    }
-    if (this.isSearching) {
-      this.AppService.SearchTvShows(this.searchTerm, page).subscribe(data => {
-        this.tvShows = data;
-        this.isSearching = true;
-      });
-    } else {
-      this.AppService.GetPopularTvShows(page).subscribe(data => {
-        this.tvShows = data;
-        this.isSearching = false;
-      });
-    }
-  }
 }

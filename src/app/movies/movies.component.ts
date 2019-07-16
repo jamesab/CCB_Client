@@ -73,36 +73,17 @@ searchTerm = '';
   }
 
 
-  Next(currentPage) {
-    const page = currentPage + 1;
+  GetCurrentPage(currentPage) {
     if (this.isSearching) {
-      this.AppService.SearchMulti(this.searchTerm, page).subscribe(data => {
+      this.AppService.SearchMulti(this.searchTerm, currentPage).subscribe(data => {
         this.movies = data;
         this.isSearching = true;
       });
     } else {
-      this.AppService.GetDiscoverMovies(page).subscribe(data => {
+      this.AppService.GetDiscoverMovies(currentPage).subscribe(data => {
         this.movies = data;
+        this.isSearching = false;
       });
     }
   }
-
-  Previous(currentPage) {
-    let page = 1;
-    if (currentPage > 1) {
-      page = currentPage - 1;
-    }
-    if (this.isSearching) {
-      this.AppService.SearchMulti(this.searchTerm, page).subscribe(data => {
-        this.movies = data;
-        this.isSearching = true;
-      });
-    } else {
-        this.AppService.GetDiscoverMovies(page).subscribe(data => {
-          this.movies = data;
-      });
-    }
-  }
-
-
 }

@@ -28,6 +28,7 @@ import { PeopleComponent } from './people/people.component';
 import { PersonDetailsComponent } from './people/person-details/person-details.component';
 //
 import { SearchFormComponent } from './shared/search-form/search-form.component';
+import { PagerComponent } from './shared/pager/pager.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { SearchFormComponent } from './shared/search-form/search-form.component'
     ProfileCardComponent,
     //
     SearchFormComponent,
+    PagerComponent,
     //
     MoviesComponent,
     MovieDetailComponent,

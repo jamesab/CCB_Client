@@ -16,7 +16,9 @@
       </div>
   </div>
 
-  <nav aria-label="Page navigation example">
+  <app-pager (SendCurrentPage)="GetCurrentPage($event)" [current_page]="tvShows?.page" [total_results]="tvShows?.total_results" [total_pages]="tvShows?.total_pages" ></app-pager>
+
+  <!-- <nav aria-label="Page navigation example">
       <ul class="pagination pagination-lg justify-content-center">
         <li [ngClass]="{'page-item disabled': tvShows?.page == 1 }">
           <a class="page-link" (click)='Previous(tvShows?.page)' aria-label="Previous">
@@ -36,5 +38,5 @@
       </ul>
       <div class="text-center">Total Results: {{tvShows?.total_results | number}}</div>
       <div class="text-center">Total Pages: {{tvShows?.total_pages | number}}</div>
-    </nav>
+    </nav> -->
 

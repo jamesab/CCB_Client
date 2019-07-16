@@ -44,8 +44,7 @@ export class PeopleComponent implements OnInit {
     }
 }
 
-  Next(currentPage) {
-    const page = currentPage + 1;
+GetCurrentPage(page) {
     if (this.isSearching) {
       this.AppService.SearchPeople(this.searchTerm, page).subscribe(data => {
         this.peoples = data;
@@ -54,24 +53,6 @@ export class PeopleComponent implements OnInit {
     } else {
       this.AppService.GetPopularPeople(page).subscribe(data => {
         this.peoples = data;
-      });
-    }
-  }
-
-  Previous(currentPage) {
-    let page = 1;
-    if (currentPage > 1) {
-      page = currentPage - 1;
-    }
-    if (this.isSearching) {
-      this.AppService.SearchPeople(this.searchTerm, page).subscribe(data => {
-        this.peoples = data;
-        this.isSearching = true;
-      });
-    } else {
-      this.AppService.GetPopularPeople(page).subscribe(data => {
-        this.peoples = data;
-        this.isSearching = false;
       });
     }
   }

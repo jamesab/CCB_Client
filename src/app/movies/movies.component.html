@@ -3,8 +3,6 @@
 
 <app-search-form (FormName)="movies" (FormCleared)="FormCleared($event)" (SearchTermEvent)="GetSearchTerm($event)"></app-search-form>
 
-
-
 <div class="container mt-3">
     <div class="form-group col-lg-3">
       <label for="sortby">
@@ -30,24 +28,4 @@
     </div>
 </div>
 
-<nav aria-label="Page navigation example">
-    <ul class="pagination pagination-lg justify-content-center">
-      <li [ngClass]="{'page-item disabled': movies?.page == 1 }">
-        <a class="page-link" (click)='Previous(movies?.page)' aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-          <span class="sr-only">Previous</span>
-        </a>
-      </li>
-
-      <li class="page-item" ><a class="page-link" >{{movies?.page}}</a></li>
-
-      <li [ngClass]="{'page-item disabled': movies?.page == movies?.total_pages }">
-        <a class="page-link" (click)='Next(movies?.page)' aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-          <span class="sr-only">Next</span>
-        </a>
-      </li>
-    </ul>
-    <div class="text-center">Total Results: {{movies?.total_results | number}}</div>
-    <div class="text-center">Total Pages: {{movies?.total_pages | number}}</div>
-</nav>
+<app-pager (SendCurrentPage)="GetCurrentPage($event)" [current_page]="movies?.page" [total_results]="movies?.total_results" [total_pages]="movies?.total_pages" ></app-pager>

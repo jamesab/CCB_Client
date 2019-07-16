@@ -13,23 +13,12 @@ export class AppService {
 
   constructor(private http: HttpClient) {  }
 
-  public SearchMulti(query, page = 1): Observable<DiscoveryModel> {
-      // tslint:disable-next-line:max-line-length
-      return this.http.get<DiscoveryModel>(`${this.BASE_URL}search/multi?api_key=${this.API_KEY}&query=${query}&language=en-US&page=${page}&include_adult=false`);
-  }
-
-public SearchPeople(query, page = 1): Observable<PopularPeople> {
-  // tslint:disable-next-line:max-line-length
-  return this.http.get<PopularPeople>(`${this.BASE_URL}search/person?api_key=${this.API_KEY}&query=${query}&language=en-US&page=${page}&include_adult=false`);
-}
-
-public SearchTvShows(query, page = 1): Observable<TvShowsModel> {
-  return this.http.get<TvShowsModel>(`${this.BASE_URL}search/tv?api_key=${this.API_KEY}&language=en-US&query=${query}&page=${page}`);
-}
-
-
-
 //#region Movies:
+
+public SearchMulti(query, page = 1): Observable<DiscoveryModel> {
+  // tslint:disable-next-line:max-line-length
+  return this.http.get<DiscoveryModel>(`${this.BASE_URL}search/multi?api_key=${this.API_KEY}&query=${query}&language=en-US&page=${page}&include_adult=false`);
+}
 
   public GetDiscoverMovies(page = 1,
                             include_video = false,
@@ -68,6 +57,11 @@ public SearchTvShows(query, page = 1): Observable<TvShowsModel> {
 
 //#region People:
 
+public SearchPeople(query, page = 1): Observable<PopularPeople> {
+  // tslint:disable-next-line:max-line-length
+  return this.http.get<PopularPeople>(`${this.BASE_URL}search/person?api_key=${this.API_KEY}&query=${query}&language=en-US&page=${page}&include_adult=false`);
+}
+
 public GetPopularPeople(page = 1): Observable<PopularPeople> {
   return this.http.get<PopularPeople>(`${this.BASE_URL}person/popular?api_key=${this.API_KEY}&language=en-US&page=${page}`);
 }
@@ -79,6 +73,10 @@ public GetPerson(person_id): Observable<PersonDetails> {
 //#endregion
 
 //#region TV SHOWS
+
+public SearchTvShows(query, page = 1): Observable<TvShowsModel> {
+  return this.http.get<TvShowsModel>(`${this.BASE_URL}search/tv?api_key=${this.API_KEY}&language=en-US&query=${query}&page=${page}`);
+}
 
 public GetPopularTvShows(page = 1): Observable<TvShowsModel> {
     return this.http.get<TvShowsModel>(`${this.BASE_URL}tv/popular?api_key=${this.API_KEY}&language=en-US&page=${page}`);
