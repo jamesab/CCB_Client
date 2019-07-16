@@ -4,18 +4,7 @@
 
 <h1 class="text-center">TV Shows</h1>
 
-<form #peopleForm="ngForm" (ngSubmit)="search(peopleForm)" class="container mt-3">
-    <div class="input-group mb-3">
-        <input ngModel type="text" name="search" class="form-control" placeholder="Search for a movie, tv show, person..." aria-label="Search for a movie, tv show, person..." aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <span class="input-group-text" (click)="search(peopleForm)">
-          <i class="material-icons">
-              search
-              </i>
-            </span>
-        </div>
-      </div>
-  </form>
+<app-search-form (FormName)="tvshows" (FormCleared)="FormCleared($event)" (SearchTermEvent)="GetSearchTerm($event)"></app-search-form>
 
 <div class="row flex-row d-inline-flex">
     <div *ngFor="let show of tvShows?.results" class="col-lg-2 text-center tvShows-card">

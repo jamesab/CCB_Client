@@ -26,6 +26,8 @@ import { TvshowsComponent } from './tvshows/tvshows.component';
 import { ShowDetailsComponent } from './tvshows/show-details/show-details.component';
 import { PeopleComponent } from './people/people.component';
 import { PersonDetailsComponent } from './people/person-details/person-details.component';
+//
+import { SearchFormComponent } from './shared/search-form/search-form.component';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { PersonDetailsComponent } from './people/person-details/person-details.c
     LoginComponent,
     FooterComponent,
     ProfileCardComponent,
+    //
+    SearchFormComponent,
     //
     MoviesComponent,
     MovieDetailComponent,

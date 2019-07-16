@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-search-form',
@@ -6,31 +6,27 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./search-form.component.css']
 })
 export class SearchFormComponent implements OnInit {
-
+SearchTerm: string;
 
   constructor() { }
 
-@Input() searchTerm: string;
-@Input() isSearching: boolean;
+@Output() SearchTermEvent = new EventEmitter<string>();
+@Output() FormCleared = new EventEmitter<boolean>();
+
+@Input() FormName: string;
 
   ngOnInit() {
-    this.isSearching = false;
-    this.searchTerm = '';
   }
 
   search(form) {
-    this.searchTerm = form.value.search;
-    if (this.searchTerm !== '') {
-      //   this.AppService.SearchTvShows(form.value.search).subscribe(data => {
-      //     this.tvShows = data;
-      //     this.isSearching = true;
-      // });
-    } else {
-      // this.AppService.GetPopularTvShows().subscribe(data => {
-      //   this.tvShows = data;
-      //   this.isSearching = false;
-      // });
-    }
-}
+    this.SearchTerm = form.value.search;
+    this.SearchTermEvent.emit(this.SearchTerm);
+  }
+
+  clear(form) {
+    this.SearchTerm = '';
+    form.reset();
+    this.FormCleared.emit(true);
+  }
 
 }

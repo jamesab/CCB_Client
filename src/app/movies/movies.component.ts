@@ -22,19 +22,21 @@ searchTerm = '';
     });
   }
 
-  clear(form) {
-    this.searchTerm = '';
-    form.reset();
-    this.AppService.GetDiscoverMovies().subscribe(data => {
-      this.movies = data;
-    });
+  FormCleared(event) {
+    if (event) {
+      this.isSearching = false;
+      this.searchTerm = '';
+      this.AppService.GetDiscoverMovies().subscribe(data => {
+        this.movies = data;
+      });
+    }
   }
 
-  search(form) {
-    this.searchTerm = form.value.search;
-    if (form.value.search !== '') {
+  GetSearchTerm(event) {
 
-      this.AppService.SearchMulti(form.value.search).subscribe(data => {
+    this.searchTerm = event;
+    if (event !== '') {
+      this.AppService.SearchMulti(event).subscribe(data => {
            this.movies = data;
            this.isSearching = true;
       });
@@ -45,6 +47,7 @@ searchTerm = '';
     });
     }
   }
+
 
   SortBy(event) {
     switch (event.target.value) {

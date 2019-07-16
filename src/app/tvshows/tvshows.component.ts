@@ -21,10 +21,20 @@ export class TvshowsComponent implements OnInit {
     });
   }
 
-  search(form) {
-    this.searchTerm = form.value.search;
+  FormCleared(event) {
+    if (event) {
+      this.searchTerm = '';
+      this.isSearching = false;
+      this.AppService.GetPopularTvShows().subscribe(data => {
+        this.tvShows = data;
+      });
+    }
+  }
+
+  GetSearchTerm(term) {
+    this.searchTerm = term;
     if (this.searchTerm !== '') {
-        this.AppService.SearchTvShows(form.value.search).subscribe(data => {
+        this.AppService.SearchTvShows(term).subscribe(data => {
           this.tvShows = data;
           this.isSearching = true;
       });

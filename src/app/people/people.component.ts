@@ -19,10 +19,20 @@ export class PeopleComponent implements OnInit {
     });
   }
 
-  search(form) {
-    this.searchTerm = form.value.search;
+  FormCleared(event) {
+    if (event) {
+      this.searchTerm = '';
+      this.isSearching = false;
+      this.AppService.GetPopularPeople().subscribe(data => {
+        this.peoples = data;
+      });
+    }
+  }
+
+  GetSearchTerm(query) {
+    this.searchTerm = query;
     if (this.searchTerm !== '') {
-        this.AppService.SearchPeople(form.value.search).subscribe(data => {
+        this.AppService.SearchPeople(query).subscribe(data => {
           this.peoples = data;
           this.isSearching = true;
       });
