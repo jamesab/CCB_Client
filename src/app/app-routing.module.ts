@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'movies/:id', component: MovieDetailComponent },
   { path: 'movies', component: MoviesComponent },
   { path: '',
-    redirectTo: 'movies',
+    component: MoviesComponent,
     pathMatch: 'full'
   },
   { path: '**', component: PageNotFoundComponent }
