@@ -1,5 +1,6 @@
+<h1 class="text-center">People</h1>
 
-<!-- <form #peopleForm="ngForm" (ngSubmit)="search(peopleForm)" class="container mt-3">
+<form #peopleForm="ngForm" (ngSubmit)="search(peopleForm)" class="container mt-3">
   <div class="input-group mb-3">
       <input ngModel type="text" name="search" class="form-control" placeholder="Search for a movie, tv show, person..." aria-label="Search for a movie, tv show, person..." aria-describedby="basic-addon2">
       <div class="input-group-append">
@@ -10,12 +11,13 @@
           </span>
       </div>
     </div>
-</form> -->
-<h1 class="text-center">People</h1>
+</form>
+
 <div class="row flex-row d-inline-flex">
     <div *ngFor="let person of peoples?.results" class="col-lg-2 text-center person-card">
       <a routerLink={{person.id}} >
-          <img class="mx-auto d-block" src="https://image.tmdb.org/t/p/w500{{person.profile_path}}" width="150" alt="Card image cap">
+          <img class="mx-auto d-block" *ngIf="person.profile_path !== null" src="https://image.tmdb.org/t/p/w500{{person.profile_path}}" width="150" alt="{{person.name}}">
+          <img class="mx-auto d-block" *ngIf="person.profile_path === null" src="../../assets/images/profile_placeholder.jpg" width="150" alt="{{person.name}}">
           <h5 class="card-title">{{person.name}}</h5>
           <span><i class="material-icons">favorite_border</i> {{person.popularity}}</span>
         </a>

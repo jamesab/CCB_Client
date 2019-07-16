@@ -1,0 +1,22 @@
+
+
+
+<form #peopleForm="ngForm" (ngSubmit)="search(peopleForm)" class="container mt-3">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <div class="input-group-text">
+                <i class="material-icons">
+                    clear_all
+                    </i>
+            </div>
+          </div>
+        <input ngModel type="text" name="search" class="form-control" placeholder="Search for a movie, tv show, person..." aria-label="Search for a movie, tv show, person..." aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <span class="input-group-text" (click)="search(peopleForm)">
+          <i class="material-icons">
+              search
+              </i>
+            </span>
+        </div>
+      </div>
+  </form>

@@ -13,6 +13,8 @@ movies: DiscoveryModel;
 
 constructor(private AppService: AppService) { }
 
+isSearching = false;
+searchTerm = '';
 
   ngOnInit() {
       this.AppService.GetDiscoverMovies().subscribe(data => {
@@ -20,10 +22,28 @@ constructor(private AppService: AppService) { }
     });
   }
 
-  search(form) {
-      this.AppService.SearchMovies(form.value.search).subscribe(data => {
-        this.movies = data;
+  clear(form) {
+    this.searchTerm = '';
+    form.reset();
+    this.AppService.GetDiscoverMovies().subscribe(data => {
+      this.movies = data;
     });
+  }
+
+  search(form) {
+    this.searchTerm = form.value.search;
+    if (form.value.search !== '') {
+
+      this.AppService.SearchMulti(form.value.search).subscribe(data => {
+           this.movies = data;
+           this.isSearching = true;
+      });
+    } else {
+      this.AppService.GetDiscoverMovies().subscribe(data => {
+        this.movies = data;
+        this.isSearching = false;
+    });
+    }
   }
 
   SortBy(event) {
@@ -52,9 +72,16 @@ constructor(private AppService: AppService) { }
 
   Next(currentPage) {
     const page = currentPage + 1;
-    this.AppService.GetDiscoverMovies(page).subscribe(data => {
-      this.movies = data;
-  });
+    if (this.isSearching) {
+      this.AppService.SearchMulti(this.searchTerm, page).subscribe(data => {
+        this.movies = data;
+        this.isSearching = true;
+      });
+    } else {
+      this.AppService.GetDiscoverMovies(page).subscribe(data => {
+        this.movies = data;
+      });
+    }
   }
 
   Previous(currentPage) {
@@ -62,9 +89,16 @@ constructor(private AppService: AppService) { }
     if (currentPage > 1) {
       page = currentPage - 1;
     }
-    this.AppService.GetDiscoverMovies(page).subscribe(data => {
-      this.movies = data;
-  });
+    if (this.isSearching) {
+      this.AppService.SearchMulti(this.searchTerm, page).subscribe(data => {
+        this.movies = data;
+        this.isSearching = true;
+      });
+    } else {
+        this.AppService.GetDiscoverMovies(page).subscribe(data => {
+          this.movies = data;
+      });
+    }
   }
 
 

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,13 +13,30 @@ export class AppService {
 
   constructor(private http: HttpClient) {  }
 
+  public SearchMulti(query, page = 1): Observable<DiscoveryModel> {
+      // tslint:disable-next-line:max-line-length
+      return this.http.get<DiscoveryModel>(`${this.BASE_URL}search/multi?api_key=${this.API_KEY}&query=${query}&language=en-US&page=${page}&include_adult=false`);
+  }
+
+public SearchPeople(query, page = 1): Observable<PopularPeople> {
+  // tslint:disable-next-line:max-line-length
+  return this.http.get<PopularPeople>(`${this.BASE_URL}search/person?api_key=${this.API_KEY}&query=${query}&language=en-US&page=${page}&include_adult=false`);
+}
+
+public SearchTvShows(query, page = 1): Observable<TvShowsModel> {
+  return this.http.get<TvShowsModel>(`${this.BASE_URL}search/tv?api_key=${this.API_KEY}&language=en-US&query=${query}&page=${page}`);
+}
+
+
+
 //#region Movies:
+
   public GetDiscoverMovies(page = 1,
                             include_video = false,
                             include_adult = false,
                             sort_by = 'popularity.desc',
                             language = 'en-US'): Observable<DiscoveryModel> {
-
+// tslint:disable-next-line:max-line-length
       return this.http.get<DiscoveryModel>(`${this.BASE_URL}discover/movie?page=${page}&include_video=${include_video}&include_adult=${include_adult}&sort_by=${sort_by}&language=en-US&api_key=${this.API_KEY}`);
   }
 
@@ -26,15 +44,16 @@ export class AppService {
     return this.http.get<MovieDetails>(`${this.BASE_URL}movie/${movie_id}?api_key=${this.API_KEY}&language=en-US`);
   }
 
-  public SearchMovies(query): Observable<DiscoveryModel> {
-    return this.http.get<DiscoveryModel>(`${this.BASE_URL}search/movies?api_key=${this.API_KEY}&query=${query}&language=en-US&page=1&include_adult=false`);
-  }
+
+
 
   public GetNowPlaying(): Observable<DiscoveryModel> {
+    // tslint:disable-next-line:max-line-length
     return this.http.get<DiscoveryModel>(`${this.BASE_URL}movie/now_playing?api_key=${this.API_KEY}&language=en-US&page=1&include_adult=false`);
   }
 
   public GetTopRated(): Observable<DiscoveryModel> {
+    // tslint:disable-next-line:max-line-length
     return this.http.get<DiscoveryModel>(`${this.BASE_URL}movie/top_rated?api_key=${this.API_KEY}&language=en-US&page=1&include_adult=false`);
   }
 

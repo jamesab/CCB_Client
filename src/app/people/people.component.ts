@@ -7,7 +7,10 @@ import { AppService } from '../app.service';
   styleUrls: ['./people.component.css']
 })
 export class PeopleComponent implements OnInit {
+  isSearching = false;
+  searchTerm = '';
   peoples: PopularPeople;
+
   constructor(private AppService: AppService) { }
 
   ngOnInit() {
@@ -17,16 +20,32 @@ export class PeopleComponent implements OnInit {
   }
 
   search(form) {
-    this.AppService.SearchMovies(form.value.search).subscribe(data => {
-      this.peoples = data;
-  });
+    this.searchTerm = form.value.search;
+    if (this.searchTerm !== '') {
+        this.AppService.SearchPeople(form.value.search).subscribe(data => {
+          this.peoples = data;
+          this.isSearching = true;
+      });
+    } else {
+      this.AppService.GetPopularPeople().subscribe(data => {
+        this.peoples = data;
+        this.isSearching = false;
+      });
+    }
 }
 
   Next(currentPage) {
     const page = currentPage + 1;
-    this.AppService.GetPopularPeople(page).subscribe(data => {
-      this.peoples = data;
-  });
+    if (this.isSearching) {
+      this.AppService.SearchPeople(this.searchTerm, page).subscribe(data => {
+        this.peoples = data;
+        this.isSearching = true;
+    });
+    } else {
+      this.AppService.GetPopularPeople(page).subscribe(data => {
+        this.peoples = data;
+      });
+    }
   }
 
   Previous(currentPage) {
@@ -34,9 +53,17 @@ export class PeopleComponent implements OnInit {
     if (currentPage > 1) {
       page = currentPage - 1;
     }
-    this.AppService.GetPopularPeople(page).subscribe(data => {
-      this.peoples = data;
-  });
+    if (this.isSearching) {
+      this.AppService.SearchPeople(this.searchTerm, page).subscribe(data => {
+        this.peoples = data;
+        this.isSearching = true;
+      });
+    } else {
+      this.AppService.GetPopularPeople(page).subscribe(data => {
+        this.peoples = data;
+        this.isSearching = false;
+      });
+    }
   }
 
 }
