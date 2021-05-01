@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AppService {
-  API_KEY = 'Get your own key';
+  API_KEY = 'Get your key here https://www.themoviedb.org/settings/api';
   BASE_URL = 'https://api.themoviedb.org/3/';
 
   constructor(private http: HttpClient) {  }

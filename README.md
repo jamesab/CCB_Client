@@ -11,6 +11,4 @@ Make it a personal application. If you do not have a website url, we recommend [
 
 [The Movie Database API Documentation](https://developers.themoviedb.org/3/getting-started/introduction)
 
-<hr/>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.

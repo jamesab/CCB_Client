@@ -19,7 +19,7 @@
 
 <div class="row flex-row d-inline-flex">
   <div *ngFor="let movie of movies?.results" class="col-lg-2 text-center movie-card">
-    <a routerLink={{movie.id}} >
+    <a [routerLink]="['/movies',movie.id]" >
         <img class="mx-auto d-block" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" width="150" alt="Card image cap">
         <h5 class="card-title" *ngIf="movie.title !== null ">{{movie.title}}</h5>
         <h5 class="card-title" *ngIf="movie.media_type !== null ">{{movie.name}}</h5>
